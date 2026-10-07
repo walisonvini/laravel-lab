@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\CustomerController;
+use App\Http\Controllers\Web\OrderController;
 use App\Http\Controllers\Web\ProductController;
 
 Route::prefix('api')->group(function () {
@@ -17,6 +18,8 @@ Route::prefix('api')->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('/me', [AuthController::class, 'me'])->name('me');
+
+        Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     });
 
 });
